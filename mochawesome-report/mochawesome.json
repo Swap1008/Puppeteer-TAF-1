@@ -1,0 +1,164 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2020-01-28T07:26:54.076Z",
+    "end": "2020-01-28T07:27:55.041Z",
+    "duration": 60965,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "426cbfa2-b616-4792-ba7f-180015d9f716",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "45c56b2f-f5a9-4b65-9d54-3aae5860fafa",
+          "title": "FirstEx Test",
+          "fullFile": "D:\\Puppeteer-Practice\\course-Section-1\\tests\\FirstExample.js",
+          "file": "\\tests\\FirstExample.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook",
+              "fullTitle": "FirstEx Test \"before all\" hook",
+              "timedOut": false,
+              "duration": 656,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "browser = await puppeteer.launch({\n  headless: config.isHeadless,\n  slowMo: config.slowMo,\n  timeout: config.launchTimeout\n});\npage = await browser.newPage();\nawait page.setDefaultTimeout(config.waitingTimeout);\nawait page.setViewport({\n  height: config.viewPortHeight,\n  width: config.viewPortWidth\n});",
+              "err": {},
+              "uuid": "0e3c4643-1ac6-42f1-9205-0e25120615e9",
+              "parentUUID": "45c56b2f-f5a9-4b65-9d54-3aae5860fafa",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook",
+              "fullTitle": "FirstEx Test \"after all\" hook",
+              "timedOut": false,
+              "duration": 261,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await browser.close();",
+              "err": {},
+              "uuid": "039d1b79-219d-48ca-b067-43a7e4aeb50d",
+              "parentUUID": "45c56b2f-f5a9-4b65-9d54-3aae5860fafa",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "should login as Admin",
+              "fullTitle": "FirstEx Test should login as Admin",
+              "timedOut": false,
+              "duration": 30014,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await page.goto(config.baseUrl + \"/admin\");\nawait page.type('[name=\"email\"]', \"admin@phptravels.com\");\nawait page.type('[name=\"password\"]', \"demoadmin\");\nawait page.click('[type=\"submit\"]');\nawait page.waitForNavigation();\nlet userRole = await page.$eval(\"h5\", element => element.textContent);\nexpect(userRole).to.equal(\"AdministratorConsole\");",
+              "err": {
+                "message": "TimeoutError: Navigation timeout of 30000 ms exceeded",
+                "estack": "TimeoutError: Navigation timeout of 30000 ms exceeded\n    at D:\\Puppeteer-Practice\\course-Section-1\\node_modules\\puppeteer\\lib\\LifecycleWatcher.js:142:21\n    at runNextTicks (internal/process/task_queues.js:58:5)\n    at listOnTimeout (internal/timers.js:501:9)\n    at processTimers (internal/timers.js:475:7)\n    at async FrameManager.navigateFrame (node_modules\\puppeteer\\lib\\FrameManager.js:94:17)\n    at async Frame.goto (node_modules\\puppeteer\\lib\\FrameManager.js:406:12)\n    at async Page.goto (node_modules\\puppeteer\\lib\\Page.js:675:12)\n    at async Context.<anonymous> (tests\\FirstExample.js:27:5)\n  -- ASYNC --\n    at Frame.<anonymous> (node_modules\\puppeteer\\lib\\helper.js:111:15)\n    at Page.goto (node_modules\\puppeteer\\lib\\Page.js:675:49)\n    at Page.<anonymous> (node_modules\\puppeteer\\lib\\helper.js:112:23)\n    at Context.<anonymous> (tests\\FirstExample.js:27:16)\n    at processImmediate (internal/timers.js:439:21)",
+                "diff": null
+              },
+              "uuid": "b1c03f7f-599b-4841-ae09-69ba0ba486ef",
+              "parentUUID": "45c56b2f-f5a9-4b65-9d54-3aae5860fafa",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should login as user",
+              "fullTitle": "FirstEx Test should login as user",
+              "timedOut": false,
+              "duration": 30022,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "helpers.loadUrl(page, config.baseUrl + \"/login\");\nawait page.waitForNavigation();\nawait page.type('[name=\"username\"]', \"user@phptravels.com\");\nawait page.type('[name=\"password\"]', \"demouser\");\nawait page.click('[type=\"submit\"]');\nawait page.waitForNavigation();\nawait helpers.click(page, \".bx-user\");",
+              "err": {
+                "message": "TimeoutError: Navigation timeout of 30000 ms exceeded",
+                "estack": "TimeoutError: Navigation timeout of 30000 ms exceeded\n    at D:\\Puppeteer-Practice\\course-Section-1\\node_modules\\puppeteer\\lib\\LifecycleWatcher.js:142:21\n    at runNextTicks (internal/process/task_queues.js:58:5)\n    at listOnTimeout (internal/timers.js:501:9)\n    at processTimers (internal/timers.js:475:7)\n    at async FrameManager.waitForFrameNavigation (node_modules\\puppeteer\\lib\\FrameManager.js:139:19)\n    at async Frame.waitForNavigation (node_modules\\puppeteer\\lib\\FrameManager.js:414:12)\n    at async Page.waitForNavigation (node_modules\\puppeteer\\lib\\Page.js:695:12)\n    at async Context.<anonymous> (tests\\FirstExample.js:39:5)\n  -- ASYNC --\n    at Frame.<anonymous> (node_modules\\puppeteer\\lib\\helper.js:111:15)\n    at Page.waitForNavigation (node_modules\\puppeteer\\lib\\Page.js:695:49)\n    at Page.<anonymous> (node_modules\\puppeteer\\lib\\helper.js:112:23)\n    at Context.<anonymous> (tests\\FirstExample.js:39:16)\n    at processImmediate (internal/timers.js:439:21)",
+                "diff": null
+              },
+              "uuid": "de389266-3979-4491-be9d-733bf59fb6d2",
+              "parentUUID": "45c56b2f-f5a9-4b65-9d54-3aae5860fafa",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b1c03f7f-599b-4841-ae09-69ba0ba486ef",
+            "de389266-3979-4491-be9d-733bf59fb6d2"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 60036,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 30000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 30000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false
+      },
+      "version": "4.1.0"
+    },
+    "marge": {
+      "options": null,
+      "version": "4.1.0"
+    }
+  }
+}
